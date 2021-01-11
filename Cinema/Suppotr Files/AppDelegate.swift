@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Cinema
 //
-//  Created by Азат Киракосян on 08.01.2021.
+//  Created by Азат Киракосян on 09.01.2021.
 //
 
 import UIKit
