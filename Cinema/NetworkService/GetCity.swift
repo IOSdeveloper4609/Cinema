@@ -24,7 +24,6 @@ final class ApiService {
                 let results = try JSONDecoder().decode([City].self, from: data)
 
                 DispatchQueue.main.async {
-                   
                     completion(results)
                 }
             } catch {

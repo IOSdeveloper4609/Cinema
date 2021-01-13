@@ -21,44 +21,23 @@ final class ViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let  collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout )
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        greateCollectionView()
-        setupSearchController()
         setupChoiceCityButton()
-        getMoviesData()
+        setupCollectionView()
+        setupSearchController()
         setupNavController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        navigationItem.titleView = nil
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchControllerAction))
-    }
-    
-    private func setupSearchController() {
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        navigationItem.titleView = searchController.searchBar
-    }
-    
-    private func getMoviesData() {
-        apiService.getCity(api: "\(urlCity)") { results in
-            var cellModels = [CityModel]()
-            
-            for city in results {
-                let model = CityModel(city: city)
-                cellModels.append(model)
-            }
-            
-            self.cellModels = cellModels
-            self.filteredStudents = cellModels
-            self.collectionView.reloadData()
-        }
+        getMoviesData()
     }
     
     private func setupChoiceCityButton() {
@@ -73,17 +52,18 @@ final class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             choiceCityButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             choiceCityButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            choiceCityButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            choiceCityButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             choiceCityButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
     
-    private func greateCollectionView() {
+    private func setupCollectionView() {
         collectionView.keyboardDismissMode = .onDrag
         collectionView.backgroundColor = .white
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         view.addSubview(collectionView)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -92,8 +72,31 @@ final class ViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.topAnchor,constant: 90),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -170)
+            collectionView.bottomAnchor.constraint(equalTo: choiceCityButton.topAnchor)
         ])
+    }
+    
+    private func setupSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.titleView = searchController.searchBar
+    }
+    
+    private func getMoviesData() {
+        apiService.getCity(api: urlCity) { results in
+            var cellModels = [CityModel]()
+            
+            for city in results {
+                let model = CityModel(city: city)
+                cellModels.append(model)
+            }
+            
+            self.cellModels = cellModels
+            self.filteredStudents = cellModels
+            self.collectionView.reloadData()
+        }
     }
     
     func hideKeyboard() {
@@ -113,10 +116,13 @@ extension ViewController {
     
     func setupNavController() {
         let navigationBar = navigationController?.navigationBar
-        navigationBar?.setBackgroundImage(#imageLiteral(resourceName: "фон"),for: .default)
+        navigationBar?.setBackgroundImage(#imageLiteral(resourceName: "фон"), for: .default)
         navigationBar?.shadowImage = UIImage()
         navigationItem.title = "выбрать город"
         navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Caviar-Dreams", size: 15) ?? UIFont.systemFont(ofSize: 15)]
+        
+        navigationItem.titleView = nil
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchControllerAction))
     }
     
     @objc func searchControllerAction() {
