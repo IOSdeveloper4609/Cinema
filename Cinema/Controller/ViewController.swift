@@ -11,6 +11,7 @@ final class ViewController: UIViewController {
     
     var cellModels = [CityModel]()
     var filteredStudents = [CityModel]()
+    let identifier = "Cell"
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let choiceCityButton = UIButton()
@@ -28,7 +29,6 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.extendedLayoutIncludesOpaqueBars = true
         setupChoiceCityButton()
         setupCollectionView()
         setupSearchController()
@@ -38,7 +38,7 @@ final class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getMoviesData()
+        getCityData()
     }
     
     private func setupChoiceCityButton() {
@@ -61,7 +61,7 @@ final class ViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.keyboardDismissMode = .onDrag
         collectionView.backgroundColor = .white
-        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
@@ -85,7 +85,7 @@ final class ViewController: UIViewController {
         navigationItem.titleView = searchController.searchBar
     }
     
-    private func getMoviesData() {
+    private func getCityData() {
         apiService.getCity(api: urlCity) { results in
             var cellModels = [CityModel]()
             

@@ -30,5 +30,4 @@ final class ApiService {
             }
         } .resume()
     }
-
 }
