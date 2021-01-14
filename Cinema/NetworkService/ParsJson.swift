@@ -8,10 +8,8 @@
 
 import UIKit
 
-
 struct  NetworkData: Codable {
     let city: [City]
-
 }
 
 struct City: Codable {
@@ -22,6 +20,7 @@ struct City: Codable {
         case picture
         case kkTitleRu = "kk_title_ru"
     }
+    
 }
 
 struct Picture: Codable {

@@ -18,8 +18,8 @@
 		0D5A008925AA3EC100F88ACF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5A008825AA3EC100F88ACF /* CustomCell.swift */; };
 		0D5A00C325AA519D00F88ACF /* ParsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5A00C225AA519D00F88ACF /* ParsJson.swift */; };
 		0D5A00CF25AA54FE00F88ACF /* GetCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5A00CE25AA54FE00F88ACF /* GetCity.swift */; };
-		0D5A00D725AA553E00F88ACF /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5A00D625AA553E00F88ACF /* URL.swift */; };
 		0D71343E25ABA58300D4BCD6 /* ViewController + extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D71343D25ABA58300D4BCD6 /* ViewController + extentions.swift */; };
+		0DCF5F6825B0581D002F638B /* urlCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF5F6725B0581D002F638B /* urlCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		0D5A008825AA3EC100F88ACF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		0D5A00C225AA519D00F88ACF /* ParsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsJson.swift; sourceTree = "<group>"; };
 		0D5A00CE25AA54FE00F88ACF /* GetCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCity.swift; sourceTree = "<group>"; };
-		0D5A00D625AA553E00F88ACF /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		0D71343D25ABA58300D4BCD6 /* ViewController + extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + extentions.swift"; sourceTree = "<group>"; };
+		0DCF5F6725B0581D002F638B /* urlCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urlCity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 			children = (
 				0D5A00C225AA519D00F88ACF /* ParsJson.swift */,
 				0D5A00CE25AA54FE00F88ACF /* GetCity.swift */,
-				0D5A00D625AA553E00F88ACF /* URL.swift */,
+				0DCF5F6725B0581D002F638B /* urlCity.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -224,13 +224,13 @@
 			files = (
 				0D5A005525AA3E1900F88ACF /* Cinema.xcdatamodeld in Sources */,
 				0D5A00CF25AA54FE00F88ACF /* GetCity.swift in Sources */,
-				0D5A00D725AA553E00F88ACF /* URL.swift in Sources */,
 				0D5A008425AA3E9E00F88ACF /* City.swift in Sources */,
 				0D5A004F25AA3E1900F88ACF /* ViewController.swift in Sources */,
 				0D71343E25ABA58300D4BCD6 /* ViewController + extentions.swift in Sources */,
 				0D5A00C325AA519D00F88ACF /* ParsJson.swift in Sources */,
 				0D5A004B25AA3E1900F88ACF /* AppDelegate.swift in Sources */,
 				0D5A008925AA3EC100F88ACF /* CustomCell.swift in Sources */,
+				0DCF5F6825B0581D002F638B /* urlCity.swift in Sources */,
 				0D5A004D25AA3E1900F88ACF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

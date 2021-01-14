@@ -28,6 +28,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.extendedLayoutIncludesOpaqueBars = true
         setupChoiceCityButton()
         setupCollectionView()
         setupSearchController()
@@ -128,8 +129,9 @@ extension ViewController {
     @objc func searchControllerAction() {
         hideKeyboard()
         
+        navigationItem.rightBarButtonItem = nil
         navigationItem.titleView = searchController.searchBar
-        
+        searchController.searchBar.becomeFirstResponder()
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.showsCancelButton = true
         searchController.searchBar.backgroundImage = UIImage()
@@ -146,6 +148,7 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         navigationItem.titleView = nil
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchControllerAction))
     }
     
 }

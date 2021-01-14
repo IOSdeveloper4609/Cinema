@@ -12,7 +12,6 @@ final class CustomCell: UICollectionViewCell {
     private var myImageView = UIImageView()
     private let titleLabel = UILabel()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,7 +31,6 @@ final class CustomCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
    private func createImageView() {
         myImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +54,8 @@ final class CustomCell: UICollectionViewCell {
         }
         
         titleLabel.text = model.title
-        
-       
     }
     
-
     private func getImageDataFrom(url: URL) {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
